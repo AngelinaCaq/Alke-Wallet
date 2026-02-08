@@ -11,45 +11,26 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Link</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Link</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Link</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search">
-                <button class="btn btn-primary" type="button">Search</button>
-            </form>
             </div>
         </div>
     </nav>
 
-
+    
     <!--Tarjetas de resumen financiero-->
-    <h1>Saldo en grande </h1>
-    <h2>Contactos </h2>
-    <h3>Ultimos tres movimientos</h3>
-    <button class="btn btn-primary" onclick="location.href='deposit.html'">Depositar</button>
-    <button class="btn btn-primary" onclick="location.href='sendmoney.html'">Transferir</button>
-    <button class="btn btn-primary" onclick="location.href='transactions.html'">Historial de transferencias</button>
-
+    
     
     <div class="container pt-5">
         <div class="text-center">
-        <button class="btn btn-primary" onclick="iniciarSesion()">Inicia sesión o registrate aquí</button>
+            <h1>Saldo en grande </h1>
+            <p>Saldo:  $<span id="saldoActual"></span> </p>
+            <h3>Ultimos movimiento</h3>
+            <button type="button" class="btn btn-primary" onclick="irADepositar()">Depositar</button>
+            <button type="button" class="btn btn-primary" onclick="irATransferir()">Transferir</button>
+            <button type="button" class="btn btn-primary" onclick="irAHistorial()">Historial de transferencias</button>
+            <h2>Contactos</h2> <!--Quizas no agregarlo-->
         </div>
     </div>
-
+    <script src="js/menu.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
