@@ -32,8 +32,12 @@
             
             <!-- Modal body -->
             <div class="modal-body">
-                <input type="number" id="montoTransferir" placeholder="Ingrese monto">
-                <button id="btnTransferir">Transferir</button>
+                <input type="text" id="nombre" placeholder="Ingrese nombre contacto">
+
+                <input type="number" id="cuenta" placeholder="Ingrese número cuenta">
+
+                <input type="text" id="banco" placeholder="Ingrese banco">
+                <button onclick="agregarContacto()">Agregar contacto</button>
             </div>
             
             <!-- Modal footer -->
@@ -80,6 +84,7 @@
     </div>
     
     <p>Lista de contactos</p>
+    <ul id="listaContactos"></ul>
 
     <button class="btn btn-primary" onclick="location.href='menu.html'">Menú</button>
     <!--Formulario de transaccion con validaciones-->

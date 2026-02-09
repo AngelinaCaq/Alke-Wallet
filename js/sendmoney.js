@@ -19,3 +19,36 @@ btnTransferir.addEventListener("click", () => {
 
 //NUEVO CONTACTO
 
+function agregarContacto() {
+    const contactos = JSON.parse(localStorage.getItem("contactos")) || [];
+
+    const nuevoContacto = {
+        nombre: document.getElementById("nombre").value,
+        cuenta: document.getElementById("cuenta").value,
+        banco: document.getElementById("banco").value
+    };
+
+    contactos.push(nuevoContacto);
+    localStorage.setItem("contactos", JSON.stringify(contactos));
+
+    alert("Contacto agregado");
+    
+}
+
+
+//MOSTRAR CONTACTOS 
+
+function mostrarContactos() {
+    const contactos = JSON.parse(localStorage.getItem("contactos")) || [];
+    const lista = document.getElementById("listaContactos");
+
+    lista.innerHTML = "";
+
+    contactos.forEach(c => {
+        const li = document.createElement("li");
+        li.textContent = `${c.nombre} - ${c.banco}`;
+        lista.appendChild(li);
+    });
+}
+
+mostrarContactos();
