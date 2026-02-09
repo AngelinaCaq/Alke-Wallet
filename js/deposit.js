@@ -8,7 +8,6 @@ botonDeposito.addEventListener("click", () => {
         alert("Monto invalido");
         return
     } else {
-        console.log("Entre alk else pero no sirvo:c")
         const saldoActual = Number(localStorage.getItem("saldo"));
         const nuevoSaldo = saldoActual + monto;
         
