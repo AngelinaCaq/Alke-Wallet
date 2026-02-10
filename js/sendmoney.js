@@ -1,24 +1,10 @@
-const montoTransferir = document.getElementById("montoTransferir");
-const btnTransferir = document.getElementById("btnTransferir");
+document.addEventListener("DOMContentLoaded", () => {
+    mostrarContactos();
+    cargarContactosEnSelect();
+});
 
-btnTransferir.addEventListener("click", () => {
-    const monto = Number(montoTransferir.value);
-
-    if (monto <= 0) {
-        alert("Monto invalido");
-        return
-    } else {
-        const saldoActual = Number(localStorage.getItem("saldo"));
-        const nuevoSaldo = saldoActual - monto;
-        
-        localStorage.setItem("saldo", nuevoSaldo);
-        window.location.href = 'menu.html';
-    }
-})
-
-
+console.log("select:", document.getElementById("selectContactos"));
 //NUEVO CONTACTO
-
 function agregarContacto() {
     const contactos = JSON.parse(localStorage.getItem("contactos")) || [];
 
@@ -30,12 +16,10 @@ function agregarContacto() {
 
     contactos.push(nuevoContacto);
     localStorage.setItem("contactos", JSON.stringify(contactos));
-
+    mostrarContactos()
+    cargarContactosEnSelect();
     alert("Contacto agregado");
-    
 }
-
-
 //MOSTRAR CONTACTOS 
 
 function mostrarContactos() {
@@ -50,5 +34,37 @@ function mostrarContactos() {
         lista.appendChild(li);
     });
 }
-
 mostrarContactos();
+
+//Seleccionar contacto 
+function cargarContactosEnSelect() {
+    const contactos = JSON.parse(localStorage.getItem("contactos")) || [];
+    const select = document.getElementById("selectContactos");
+
+    select.innerHTML = `<option>Selecciona un contacto</option>`;
+
+    contactos.forEach((c) => {
+    const option = document.createElement("option");
+        console.log("hola")
+    option.textContent = `${c.nombre} - ${c.banco}`;
+
+    select.appendChild(option);
+    });
+}
+
+
+
+function hacerTransferencia() {
+    const monto = Number(montoDepositar.value);
+
+    if (monto <= 0) {
+        alert("Monto invalido");
+        return
+    } else {
+        const saldoActual = Number(localStorage.getItem("saldo"));
+        const nuevoSaldo = saldoActual - monto;
+        
+        localStorage.setItem("saldo", nuevoSaldo);
+        window.location.href = 'menu.html';
+    }
+}

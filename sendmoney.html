@@ -10,16 +10,12 @@
     
 
     <p>Contacto</p>
-    <p>Agregar nuevo contacto</p>
-
-
+    <h2>Agregar nuevo contacto</h2>
     <!--Modal de nuevo contacto-->
-    <!-- Button to Open the Modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
         +
     </button>
 
-    <!-- The Modal -->
     <div class="modal fade" id="myModal">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -42,49 +38,29 @@
             
             <!-- Modal footer -->
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
             
         </div>
         </div>
     </div>
 
-    <!--Modal de transferencia-->
-    <h2>Centered Modal Example</h2>
-    <p>Center the modal vertically and horizontally within the page, with the .modal-dialog-centered class.</p>
-    <!-- Button to Open the Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Haz una Transferencia
-    </button>
 
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+    <!--Formulario de transferencias-->
+        <h2>Haz una transferencia</h2>
+            <input type="number" id="montoDepositar" placeholder="Ingresa monto a transferir">
+            <select id="selectContactos">
+                <option>Selecciona un contacto</option>
+            </select>
+            <button type="button" onclick="hacerTransferencia()">Transferir</button>
         
-            <!-- Modal Header -->
-            <div class="modal-header">
-            <h4 class="modal-title">Nuevo Contacto</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            
-            <!-- Modal body -->
-            <div class="modal-body">
-                <input type="number" id="montoTransferir" placeholder="Ingrese monto">
-                <button id="btnTransferir">Transferir</button>
-            </div>
-            
-            <!-- Modal footer -->
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-            
-        </div>
-        </div>
-    </div>
+    
+    
     
     <p>Lista de contactos</p>
-    <ul id="listaContactos"></ul>
+    <ul id="listaContactos">
+        <li>hiaosd</li>
+    </ul>
 
     <button class="btn btn-primary" onclick="location.href='menu.html'">Menú</button>
     <!--Formulario de transaccion con validaciones-->
