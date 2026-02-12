@@ -41,7 +41,7 @@ function cargarContactosEnSelect() {
     const contactos = JSON.parse(localStorage.getItem("contactos")) || [];
     const select = document.getElementById("selectContactos");
 
-    select.innerHTML = `<option>Selecciona un contacto</option>`;
+    select.innerHTML = `<option value="">Selecciona un contacto</option>`;
 
     contactos.forEach((c) => {
     const option = document.createElement("option");
@@ -56,9 +56,10 @@ function cargarContactosEnSelect() {
 
 function hacerTransferencia() {
     const monto = Number(montoDepositar.value);
+    const contactoEnviar = document.getElementById("selectContactos").value;
 
-    if (monto <= 0) {
-        alert("Monto invalido");
+    if (monto <= 0 || contactoEnviar === "" ) {
+        alert("Monto o contacto invalido");
         return
     } else {
         const saldoActual = Number(localStorage.getItem("saldo"));
