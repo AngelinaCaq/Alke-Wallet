@@ -1,3 +1,17 @@
+function guardarTransaccionTransferencia(monto, detalle) {
+    const historial = JSON.parse(localStorage.getItem("historial")) || [];
+
+    const nuevaTransaccion = {
+        tipo: "Transferencia",
+        monto: monto,
+        fecha: new Date().toLocaleString(),
+        detalle: `Enviado a ${detalle}`
+    };
+
+    historial.push(nuevaTransaccion);
+    localStorage.setItem("historial", JSON.stringify(historial));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     mostrarContactos();
     cargarContactosEnSelect();
@@ -19,6 +33,7 @@ function agregarContacto() {
     mostrarContactos()
     cargarContactosEnSelect();
     alert("Contacto agregado");
+    location.reload();
 }
 //MOSTRAR CONTACTOS 
 
@@ -28,9 +43,18 @@ function mostrarContactos() {
 
     lista.innerHTML = "";
 
-    contactos.forEach(c => {
+    contactos.reverse().forEach(c => {
         const li = document.createElement("li");
-        li.textContent = `${c.nombre} - ${c.banco}`;
+
+        li.className = "list-group-item text-center";
+
+        li.innerHTML = `
+            <div class="h6 mb-1">${c.nombre}</div>
+            <div class="small text-muted">
+                ${c.banco} - ${c.cuenta}
+            </div>
+        `;
+
         lista.appendChild(li);
     });
 }
@@ -43,12 +67,12 @@ function cargarContactosEnSelect() {
 
     select.innerHTML = `<option value="">Selecciona un contacto</option>`;
 
-    contactos.forEach((c) => {
-    const option = document.createElement("option");
-        console.log("hola")
-    option.textContent = `${c.nombre} - ${c.banco}`;
+    contactos.reverse().forEach((c) => {
+        const option = document.createElement("option");
+        option.value = `${c.nombre} - ${c.cuenta}`;
+        option.textContent = `${c.nombre} - ${c.banco}`;
 
-    select.appendChild(option);
+        select.appendChild(option);
     });
 }
 
@@ -56,16 +80,25 @@ function cargarContactosEnSelect() {
 
 function hacerTransferencia() {
     const monto = Number(montoDepositar.value);
-    const contactoEnviar = document.getElementById("selectContactos").value;
+    const contacto = document.getElementById("selectContactos").value;
 
-    if (monto <= 0 || contactoEnviar === "" ) {
-        alert("Monto o contacto invalido");
-        return
-    } else {
-        const saldoActual = Number(localStorage.getItem("saldo"));
-        const nuevoSaldo = saldoActual - monto;
-        
-        localStorage.setItem("saldo", nuevoSaldo);
-        window.location.href = 'menu.html';
+    if (monto <= 0 || contacto === "") {
+        alert("Monto o contacto inválido");
+        return;
     }
+
+    const saldoActual = Number(localStorage.getItem("saldo"));
+
+    if (monto > saldoActual) {
+        alert("Saldo insuficiente");
+        return;
+    }
+
+    const nuevoSaldo = saldoActual - monto;
+
+    localStorage.setItem("saldo", nuevoSaldo);
+
+    guardarTransaccionTransferencia(monto, contacto);
+
+    window.location.href = 'menu.html';
 }
